@@ -1,9 +1,9 @@
-import express from 'express';
+import express, { type Request, type Response } from 'express';
 
 const app = express();
 const port = 3000;
 
-app.get('/',(req,res) => {
+app.get('/',(req: Request, res: Response) => {
     res.send('Bienvenue sur mon serveur API')
 });
 
