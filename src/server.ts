@@ -16,3 +16,19 @@ function greet(name: string): string {
 }
 let message = greet("Arnaud");
 console.log(message);
+
+interface Etudiant {
+    id: number;
+    nom: string;
+    prenom: string;
+}
+
+const etudiants: Etudiant[] = [
+    {id: 1, nom: "Dupont", prenom: "Jean"},
+    {id: 2, nom: "Martin", prenom: "Sophie"},
+    {id: 3, nom: "Doe", prenom: "John"}
+];
+
+app.get('/api/data', (req: Request, res: Response) => {
+    res.json(etudiants);
+})
