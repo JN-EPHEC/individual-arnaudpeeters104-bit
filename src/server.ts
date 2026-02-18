@@ -4,6 +4,8 @@ import sequelize from './config/database.js';
 import User from './models/User.js'
 import path from 'path';
 import { fileURLToPath } from 'url';
+import tacheRouter from './routes/tacheRoutes.js';
+import Tache from './models/Tache.js';
 
 
 const app = express();
@@ -17,6 +19,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api/users', userRouter);
+
+app.use('/api/taches', tacheRouter);
 
 /*app.get('/',(req: Request, res: Response) => {
     res.send('Bienvenue sur mon serveur API')
