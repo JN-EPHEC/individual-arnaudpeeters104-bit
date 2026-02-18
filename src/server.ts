@@ -8,15 +8,17 @@ import User from './models/User.js'
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+
 app.use('/api/users', userRouter);
 
 app.get('/',(req: Request, res: Response) => {
     res.send('Bienvenue sur mon serveur API')
 });
 
-app.listen(port, () => {
+/*app.listen(port, () => {
     console.log(`Serveur lancé sur http://localhost:${port}`);
-});
+});*/
 
 function greet(name: string): string {
     return `Hello, ${name}!`;
