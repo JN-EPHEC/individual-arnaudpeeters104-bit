@@ -2,19 +2,25 @@ import express, { type Request, type Response } from 'express';
 import userRouter from './routes/userRoutes.js';
 import sequelize from './config/database.js';
 import User from './models/User.js'
-
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 
 const app = express();
 const port = 3000;
 
+const __filename = fileURLToPath(import.meta.url);//pour les modules ES
+const __dirname = path.dirname(__filename);
+
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api/users', userRouter);
 
-app.get('/',(req: Request, res: Response) => {
+/*app.get('/',(req: Request, res: Response) => {
     res.send('Bienvenue sur mon serveur API')
-});
+});*/
 
 /*app.listen(port, () => {
     console.log(`Serveur lancé sur http://localhost:${port}`);
