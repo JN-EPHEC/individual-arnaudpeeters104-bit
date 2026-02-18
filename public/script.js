@@ -21,12 +21,24 @@ function displayUsers(users) {
 
     users.forEach(user => {
         const li = document.createElement('li');
-        li.className = 'list-group-item'; // Classe Bootstrap pour le style
-        li.textContent = `${user.firstName} ${user.lastName}`; 
+         // Classe Bootstrap pour le style
+        li.className = 'list-group-item d-flex justify-content-between align-items-center';
+        
+        //crée une URL image unique basée sur le prénom
+        const avatar = `https://robohash.org/${user.firstName}?set=set2&size=40x40`;
+
+        li.innerHTML = `
+           <div class="d-flex align-items-center">
+                <img src="${avatar}" alt="Avatar" class="rounded-circle me-3" style="border: 1px solid #ddd;">
+                <span class="fw-bold">${user.firstName} ${user.lastName}</span>
+            </div>
+            <button class="btn btn-danger btn-sm" onclick="deleteUser(${user.id})">X</button>
+        `;
         userList.appendChild(li);
     });
 }
 
+//ajoute le user
 userForm.addEventListener('submit', async (event) => {
     event.preventDefault(); 
 
@@ -58,3 +70,22 @@ userForm.addEventListener('submit', async (event) => {
         console.error('Erreur:', error);
     }
 });
+
+//supp l'user avec la case
+window.deleteUser = async (id) => {
+    if (!confirm("Voulez-vous vraiment supprimer cet utilisateur ?")) return;
+
+    try {
+        const response = await fetch(`/api/users/${id}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            fetchUsers(); // Refresh la liste après supp
+        } else {
+            alert("Erreur lors de la suppression");
+        }
+    } catch (error) {
+        console.error('Erreur:', error);
+    }
+};
