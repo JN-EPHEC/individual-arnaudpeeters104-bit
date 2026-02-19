@@ -2,10 +2,13 @@ import express, { type Request, type Response } from 'express';
 import userRouter from './routes/userRoutes.js';
 import sequelize from './config/database.js';
 import { requestLogger } from './middlewares/logger.js';
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "./config/swagger";
 
 const app = express();
 const port = 3000;
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use(express.json());
 
