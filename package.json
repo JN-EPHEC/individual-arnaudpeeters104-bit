@@ -2,6 +2,15 @@
   "name": "package.json",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/JN-EPHEC/individual-arnaudpeeters104-bit#readme",
+  "bugs": {
+    "url": "https://github.com/JN-EPHEC/individual-arnaudpeeters104-bit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JN-EPHEC/individual-arnaudpeeters104-bit.git"
+  },
   "license": "ISC",
   "author": "",
   "type": "module",
@@ -10,15 +19,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsx --watch src/server.ts"
   },
-  "keywords": [],
-  "devDependencies": {
-    "@types/express": "^5.0.6",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
-  },
   "dependencies": {
     "express": "^5.2.1",
     "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }

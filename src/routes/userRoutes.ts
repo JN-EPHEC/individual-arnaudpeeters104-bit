@@ -1,5 +1,6 @@
 import { Router, type Request, type Response } from 'express';
 import User from '../models/User.js';
+import * as userController from "../controllers/userController.js";
 
 const router = Router();
 
@@ -18,14 +19,18 @@ router.get('/', (req: Request, res: Response) => {
 }); */
 
 //recupe les users
-router.get('/', async (req: Request, res: Response) => {
+/*router.get('/', async (req: Request, res: Response) => {
     try {
         const users = await User.findAll();
         res.json(users);
     } catch (error) {
         res.status(500).json({ error: "Erreur lors de la récupération des utilisateurs" });
     }
-});
+});*/
+
+
+router.get("/", userController.getAllUsers);
+
 
 //creer les users
 router.post('/', async (req: Request, res: Response) => {
