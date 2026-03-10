@@ -1,4 +1,5 @@
 import express, { type Request, type Response } from 'express';
+import cors from 'cors';
 import userRouter from './routes/userRoutes.js';
 import sequelize from './config/database.js';
 import { requestLogger } from './middlewares/logger.js';
@@ -7,6 +8,9 @@ import { swaggerSpec } from "./config/swagger";
 
 const app = express();
 const port = 3000;
+
+// Autorise tout le monde (CORS)
+app.use(cors());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 

@@ -4,35 +4,41 @@ import * as userController from "../controllers/userController.js";
 
 const router = Router();
 
-/*interface Users {
-    id: number;
-    name: string;
-}
-
-const users: Users[] = [
-    { id: 1, name: "Alice" },
-    { id: 2, name: "Bob" },
-]; 
-
-router.get('/', (req: Request, res: Response) => {
-    res.json(users);
-}); */
-
-//recupe les users
-/*router.get('/', async (req: Request, res: Response) => {
-    try {
-        const users = await User.findAll();
-        res.json(users);
-    } catch (error) {
-        res.status(500).json({ error: "Erreur lors de la récupération des utilisateurs" });
-    }
-});*/
-
-
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: Récupère la liste des utilisateurs
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: Succès
+ */
 router.get("/", userController.getAllUsers);
 
-
-//creer les users
+/**
+ * @swagger
+ * /api/users:
+ *   post:
+ *     summary: Crée un nouvel utilisateur
+ *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               firstName:
+ *                 type: string
+ *               lastName:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Utilisateur créé avec succès
+ *       400:
+ *         description: Erreur lors de la création de l'utilisateur
+ */
 router.post('/', async (req: Request, res: Response) => {
     try {
         const { firstName, lastName } = req.body;
@@ -43,7 +49,27 @@ router.post('/', async (req: Request, res: Response) => {
     }
 });
 
-//supprimer les users
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   delete:
+ *     summary: Supprime un utilisateur via son ID
+ *     tags: [Users]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID de l'utilisateur à supprimer
+ *     responses:
+ *       204:
+ *         description: Utilisateur supprimé avec succès
+ *       404:
+ *         description: Utilisateur non trouvé
+ *       500:
+ *         description: Erreur lors de la suppression
+ */
 router.delete('/:id', async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
