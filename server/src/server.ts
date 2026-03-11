@@ -73,3 +73,4 @@ sequelize.sync().then(() => {
         console.log("sreveur ok")
     });
 });
+
