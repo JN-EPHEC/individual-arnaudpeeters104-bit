@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="text-center mb-4">Gestion des Utilisateurs</h1>
+      <h1 className="text-center mb-4">Gestion des Utilisateurs de Arnaud</h1>
 
       <section className="mb-5">
         <h3>Ajouter un utilisateur</h3>
