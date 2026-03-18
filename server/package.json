@@ -16,7 +16,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "tsx watch src/server.ts",
+    "dev": "tsx watch src/server.ts", 
+    "build": "tsc",
+    "start": "node dist/server.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
@@ -24,6 +26,7 @@
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "pg": "^8.20.0",
     "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7",
     "swagger": "^0.7.5",

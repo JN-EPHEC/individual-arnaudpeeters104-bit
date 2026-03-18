@@ -16,7 +16,8 @@ function App() {
 
   // Fonction pour récupérer la liste depuis le backend
   const fetchUsers = () => {
-    fetch("http://localhost:3000/api/users")
+    
+    fetch(`${import.meta.env.VITE_API_URL}/users`)
       .then(res => res.json())
       .then(result => setData(result))
       .catch(err => console.error(err));
@@ -32,7 +33,8 @@ function App() {
     e.preventDefault(); // Empêche la page de se recharger
     
     // On envoie les données au backend
-    fetch("http://localhost:3000/api/users", {
+    
+    fetch(`${import.meta.env.VITE_API_URL}/users`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ firstName, lastName })
